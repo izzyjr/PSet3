@@ -35,32 +35,20 @@ bool search(int value, int values[], int n)
  */
 void sort(int values[], int n)
 {
-    for (int i = 0; i < (n - 2); i++)
+    for (int k = 0; k < n; k++)
     {
-        if(values[i + 1] < values[i])
+        for (int i = 0; i < (n - 1); i++)
         {
-            int temp = values[i];
-            values[i] = values[i + 1];
-            values[i + 1] = temp;
+            if(values[i + 1] < values[i])
+            {
+                int temp = values[i];
+                values[i] = values[i + 1];
+                values[i + 1] = temp;
+            }
         }
     }
-    for(int j = 0; j < n; j++)
-    {
-        printf("%i\n", values[j]);
-    }
+        // for(int j = 0; j < n; j++)
+        // {
+        //     printf("%i\n", values[j]);
+        // }
 }
-
-// var swaps = 0;
-//     for (var i = 0; i < n; i++) {
-//         for (var j = 0; j < n - 1; j++) {
-//             if (a[j] > a[j + 1]) {
-//                 var tmp = a[j];
-//                     a[j] = a[j + 1];
-//                     a[j + 1] = tmp;
-//                 swaps++;
-//             }
-//         }
-//             if (swaps == 0) {
-//                 break;
-//             }
-//     }
