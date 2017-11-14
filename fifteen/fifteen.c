@@ -216,7 +216,44 @@ void draw(void)
  */
 bool move(int tile)
 {
-    // TODO
+    for (int row = 0; row < d; row++)
+    {
+        for (int col = 0; col < d; col++)
+        {
+            if (board[row][col] == tile)
+            {
+                int loc = board[row][col];
+                if (board[row][col - 1] == 0 && col > 0)
+                {
+                    board[row][col] = board[row][col - 1];
+                    board[row][col - 1] = loc;
+                    return true;
+                }
+                else if (board[row - 1][col] == 0 && row > 0)
+                {
+                    board[row][col] = board[row - 1][col];
+                    board[row - 1][col] = loc;
+                    return true;
+                }
+                else if (board[row][col + 1] == 0 && col < (d - 1))
+                {
+                    board[row][col] = board[row][col + 1];
+                    board[row][col + 1] = loc;
+                    return true;
+                }
+                else if (board[row + 1][col] == 0 && row < (d - 1))
+                {
+                    board[row][col] = board[row + 1][col];
+                    board[row + 1][col] = loc;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
     return false;
 }
 
@@ -226,6 +263,23 @@ bool move(int tile)
  */
 bool won(void)
 {
-    // TODO
+    int tiles = (d * d) - 1;
+    int order = 0;
+    int count = 0;
+    for (int row = 0; row < d; row++)
+    {
+        for (int col = 0; col < d; col++)
+        {
+            order++;
+            if (order == board[row][col])
+            {
+                count++;
+            }
+        }
+    }
+    if (count == tiles)
+    {
+        return true;
+    }
     return false;
 }
